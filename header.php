@@ -14,8 +14,8 @@
     <nav>
        <ul class="nav-links">
            <li><a href="index.php">Home</a></li>
-           <li><a href="index.php?page=post.php">Post</a></li>
-           <li><a href="index.php?page=about.php">About</a></li>
-           <li><a href="index.php?page=signupform.php">Sign up</a></li>
+           <li><a href="index.php?page=post">Post</a></li>
+           <li><a href="index.php?page=about">About</a></li>
+           <li><a href="index.php?page=login">Login</a></li>
        </ul>
     </nav>

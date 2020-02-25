@@ -3,14 +3,35 @@
 include("header.php");
 include("includes/db.php");
 
-if(isset($_GET['page']) && $_GET['page']="about.php"){
+session_start();
+//echo (isset($_GET['err']) && $_GET['err'] == true ? "something went wrong!" : "");
+// echo(isset($_SESSION['username']) ? "Welcome" . $_SESSION['username'] : '');
+if (isset($_GET['err']) && $_GET['err'] == true){
+echo "you are a new user!";
+}
+
+elseif (isset($_SESSION['user__name'])){
+
+    echo "Hello!! " . $_SESSION['user__name'] . "!<br/>";
+    echo '<a href = "views/logout.php">Log out!</a>';
+
+}else {
+    include ("views/home.php");
+
+}
+
+// show different pages
+$page = (isset($_GET['page']) ? $_GET['page'] : '');
+
+if($page=="about"){
     include("views/about.php");
+}elseif($page=="post"){
+    include("views/post.php");
+}elseif($page=="login"){
+    include("views/loginform.php");
+}else{
+    include("views/home.php");
 }
-if(isset($_GET['page']) && $_GET['page']="signupform.php"){
-    include("views/signupform.php");
-}
-
-
 
 // $postsObj = new Posts($dbh);
 // $postsObj->fetchAll();
@@ -22,27 +43,7 @@ if(isset($_GET['page']) && $_GET['page']="signupform.php"){
 //     echo "</p></div>";
 // }
 
-
-session_start();
-//echo (isset($_GET['err']) && $_GET['err'] == true ? "something went wrong!" : "");
-// echo(isset($_SESSION['user__name']) ? "Welcome" . $_SESSION['user__name'] : '');
-if (isset($_GET['err']) && $_GET['err'] == true){
-echo "you are a new user!";
-
-}
-
-elseif (isset($_SESSION['user__name'])){
-
-    echo "Hello " . $_SESSION['user__name'] . "!<br/>";
-    echo '<a href = "views/logout.php">Log out!</a>';
-
-}else {
-    include ("views/loginform.php");
-}
-
 ?>
-
-
 
 </body>
 </html>
