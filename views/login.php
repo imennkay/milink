@@ -25,7 +25,8 @@ $row = $return->fetch(PDO::FETCH_ASSOC);
      session_start();
      $_SESSION ['user__name'] = $row['username'];
      $_SESSION ['user__password'] = $row['password'];
-     header("location:../index.php")
+    
+     header("location:../index.php");
    
  }
 

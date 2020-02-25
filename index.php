@@ -12,8 +12,6 @@ if(isset($_GET['page']) && $_GET['page']="signupform.php"){
 
 
 
-
-
 // $postsObj = new Posts($dbh);
 // $postsObj->fetchAll();
 // foreach($postsObj->getPosts() as $post){
