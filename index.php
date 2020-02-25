@@ -24,6 +24,24 @@ if(isset($_GET['page']) && $_GET['page']="signupform.php"){
 //     echo "</p></div>";
 // }
 
+
+session_start();
+//echo (isset($_GET['err']) && $_GET['err'] == true ? "something went wrong!" : "");
+// echo(isset($_SESSION['user__name']) ? "Welcome" . $_SESSION['user__name'] : '');
+if (isset($_GET['err']) && $_GET['err'] == true){
+echo "you are a new user!";
+
+}
+
+elseif (isset($_SESSION['user__name'])){
+
+    echo "Hej " . $_SESSION['user__name'] . "!<br/>";
+    echo '<a href = "logout.php">Logga ut!</a>';
+
+}else {
+    include ("views/loginform.php");
+}
+
 ?>
 
 
