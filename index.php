@@ -7,7 +7,7 @@ session_start();
 //echo (isset($_GET['err']) && $_GET['err'] == true ? "something went wrong!" : "");
 // echo(isset($_SESSION['username']) ? "Welcome" . $_SESSION['username'] : '');
 if (isset($_GET['err']) && $_GET['err'] == true){
-echo "you are a new user!";
+
 }elseif(isset($_SESSION['user__name'])){
 
     echo "Hello!! " . $_SESSION['user__name'] . "!<br/>";

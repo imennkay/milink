@@ -10,7 +10,9 @@
        <?php
          if(isset($_GET['err']) && $_GET['err']=true){
             echo "Wrong!". $_GET['message']."<br>";
-         }
+
+         } 
+      
        ?>
          <p>Sign up</p>
            <form action="signup.php" method="POST">

@@ -16,9 +16,9 @@
     <p>Login</p>
     <form action="views/login.php" method="post">
     
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password" >
-    <input type="submit" value="Submit" name="submit">
+    <input type="text" name="username" placeholder="Username"><br />
+    <input type="password" name="password" placeholder="Password" ><br />
+    <input type="submit" value="Login" name="submit"><br />
 
     </form>
 

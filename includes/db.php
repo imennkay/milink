@@ -1,7 +1,7 @@
 <?php 
 $host = "localhost";
 $user = "root";
-$pass = "cfc619619";
+$pass = "";
 $db = "milink";
 
 
