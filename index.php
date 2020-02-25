@@ -35,7 +35,7 @@ echo "you are a new user!";
 
 elseif (isset($_SESSION['user__name'])){
 
-    echo "Hej " . $_SESSION['user__name'] . "!<br/>";
+    echo "Hello " . $_SESSION['user__name'] . "!<br/>";
     echo '<a href = "views/logout.php">Log out!</a>';
 
 }else {
