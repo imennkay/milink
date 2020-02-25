@@ -33,8 +33,13 @@ echo "you are a new user!";
 
 elseif (isset($_SESSION['user__name'])){
 
+<<<<<<< HEAD
     echo "Hej " . $_SESSION['user__name'] . "!<br/>";
     echo '<a href = "logout.php">Logga ut!</a>';
+=======
+    echo "Hello " . $_SESSION['user__name'] . "!<br/>";
+    echo '<a href = "views/logout.php">Log out!</a>';
+>>>>>>> c904d0f870134523c4582eff4e1b4d911a68e506
 
 }else {
     include ("views/loginform.php");
