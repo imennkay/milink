@@ -12,7 +12,7 @@ if(isset($_POST["submit"])){
     // check if username is empty
     if(empty($_POST["username"])){
         $errorMessages= "Name cannot be empty!";
-        header("location:loginform.php?err=true&message=$errorMessages");
+        header("location:../index.php?page=login&err=true&message=$errorMessages");
         exit;
     }else{     
         $userName = $_POST['username'];
@@ -21,7 +21,7 @@ if(isset($_POST["submit"])){
     if(empty($_POST['password'])){
 
         $errorMessages= "Password cannot be empty!";
-        header("location:loginform.php?err=true&message=$errorMessages");
+        header("location:../index.php?page=login&err=true&message=$errorMessages");
         exit;
     }else{
         $userPassword = md5($_POST['password']);
@@ -35,7 +35,7 @@ if(isset($_POST["submit"])){
 
     if(empty($row)){
         $errorMessages= "You haven't signup!";
-        header("location:loginform.php?err=true&message=$errorMessages");
+        header("location:../index.php?page=login&err=true&message=$errorMessages");
     }else{
         session_start();
         $_SESSION['user__name'] = $_POST['username'];

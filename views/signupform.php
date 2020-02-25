@@ -13,7 +13,7 @@
          }
        ?>
          <p>Sign up</p>
-           <form action="views/signup.php" method="POST">
+           <form action="signup.php" method="POST">
               <input type="text" name="username" placeholder="Username"><span>*</span><br>
               <input type="password" name="password" placeholder="Password"><span>*</span><br>
               <input type="password" name="password_confirm" placeholder="Confirm password"><span>*</span><br>
