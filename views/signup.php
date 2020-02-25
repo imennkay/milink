@@ -11,7 +11,7 @@ if(isset($_POST["submit"])){
     if(empty($_POST["username"])){
         $errors = true;
         $errorMessages= "Name cannot be empty!";
-        header("location:signupform.php?err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
         exit;
     }else{
           $userName = $_POST['username'];
@@ -23,7 +23,7 @@ if(isset($_POST["submit"])){
           if(!empty($data)){
           $errors = true;
           $errorMessages= "Username has been occupied. Please choose a new one.";
-          header("location:signupform.php?err=$errors&message=$errorMessages");
+          header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
           exit;
         }
     }
@@ -31,7 +31,7 @@ if(isset($_POST["submit"])){
     if(empty($_POST['password'])){
         $errors = true;
         $errorMessages= "Password cannot be empty!";
-        header("location:signupform.php?err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
         exit;
     }else{
       $passWord1 = md5($_POST['password']);
@@ -40,7 +40,7 @@ if(isset($_POST["submit"])){
     if(empty($_POST['password_confirm'])){
       $errors = true;
       $errorMessages= "Confirm password cannot be empty!";
-      header("location:signupform.php?err=$errors&message=$errorMessages");
+      header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
       exit;
     }else{
       $passWord2 = md5($_POST['password_confirm']);
@@ -49,7 +49,7 @@ if(isset($_POST["submit"])){
     if($_POST['password'] != $_POST['password_confirm']){
         $errors = true;
         $errorMessages= "Password are not the same!";
-        header("location:signupform.php?err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
         exit;
     }
 
