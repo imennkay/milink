@@ -1,23 +1,8 @@
 <?php
+  session_start();
+  include("../includes/db.php");
 
-include("../includes/db.php");
-
-
-// $userName = (!empty($_POST['username']) ? $_POST['username'] : "");
-// $userPassword = (!empty($_POST['password']) ? $_POST['password'] : "");
-
-
-$userName = $_POST['username'];
-$userPassword = md5($_POST['password']);
-echo $userPassword;
-$query= "SELECT username, password from users where username = '$userName' and password ='$userPassword'";
-
-$return = $dbh->query($query);
-
-
-$row = $return->fetch(PDO::FETCH_ASSOC);
-
-
+// check if submit button has been clicked
 if(isset($_POST["submit"])){
     $errors = false;
     $errorMessages = "";
@@ -28,24 +13,32 @@ if(isset($_POST["submit"])){
         $errorMessages= "Name cannot be empty!";
         header("location:loginform.php?err=$errors&message=$errorMessages");
         exit;
-    } else {
-        session_start();
-     $_SESSION ['user__name'] = $row['username'];
-     header("location:../index.php");
-     
- }
+    }else{
+          $userName = $_POST['username'];
+        }
 
-}
+    if(empty($_POST['password'])){
+        $errors = true;
+        $errorMessages= "Password cannot be empty!";
+        header("location:loginform.php?err=$errors&message=$errorMessages");
+        exit;
+    }else{
+      $passWord = md5($_POST['password']);
+    }
 
-if(empty($_POST['password'])){
-    $errors = true;
-    $errorMessages= "Password cannot be empty!";
-    header("location:loginform.php?err=$errors&message=$errorMessages");
-    exit;
-}else{
-    session_start();
-    $_SESSION ['user__password'] = $row['password'];
-}
-header("location:../index.php");
-
+// if all above  requirements are filled, insert into database
+        $sql= "SELECT name, password from users where username = '$userName' and password ='$passWord'";
+        $stmt=$dbh->prepare($sql);
+        $stmt->bindParam(':userName', $userName);
+        $stmt->bindParam(':passWord', $passWord);
+        $return=$stmt->execute();
+        if(!$return){
+        print_r($dbh->errorInfo());
+        }else{
+          $_SESSION['user_name']=$userName;
+          $_SESSION['pass_word']=$passWord;
+          echo "Login up sucess!";
+          echo "<a href=\"../index.php\">Start nu</a>";
+        }
+  }
 ?>

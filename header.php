@@ -17,5 +17,6 @@
            <li><a href="index.php?page=post">Post</a></li>
            <li><a href="index.php?page=about">About</a></li>
            <li><a href="index.php?page=login">Login</a></li>
+           
        </ul>
     </nav>
