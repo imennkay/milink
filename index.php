@@ -36,10 +36,11 @@ echo "you are a new user!";
 elseif (isset($_SESSION['user__name'])){
 
     echo "Hej " . $_SESSION['user__name'] . "!<br/>";
-    echo '<a href = "logout.php">Logga ut!</a>';
+    echo '<a href = "views/logout.php">Log out!</a>';
 
 }else {
     include ("views/loginform.php");
+    include ("views/signupform.php");
 }
 
 ?>

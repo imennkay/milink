@@ -21,11 +21,13 @@ $row = $return->fetch(PDO::FETCH_ASSOC);
 
  if (empty($row)){
      echo "You can not login";
-    header("location:index.php?err=true");
+    header("location:../index.php?err=true");
  } else {
      session_start();
-     $_SESSION ['user__name'] = $row['name'];
+     $_SESSION ['user__name'] = $row['username'];
      $_SESSION ['user__password'] = $row['password'];
+    
+     header("location:../index.php");
    
  }
 
