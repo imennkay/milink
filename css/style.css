@@ -3,6 +3,56 @@
     padding: 0;
     box-sizing: border-box;
 }
-h1{
-    color:green;
+body{
+    font-family: Arial,Helvetica,sans-serif;
+}
+/* styles for navbar */
+nav{
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+}
+.nav-links{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style: none;
+    width: 50%;
+    height: 100%;
+
+}
+.nav-links li a{
+    text-decoration: none;
+    color:silver;
+   
+}
+/* styles for header */
+.header{
+    height: 60vh;
+    width:80%;
+    margin: auto;
+    
+    background: url("../images/rose-near-watch-big.jpg");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.header h1{
+    letter-spacing: 2px;
+}
+.post-session{
+    width:80%;
+    margin: auto;
+    margin-top: 5rem;
+}
+.card-img{
+    max-height: 300px;
+    width:100%;
+}
+.card-title{
+    font-size: 2rem;
 }
