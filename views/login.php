@@ -19,16 +19,34 @@ $return = $dbh->query($query);
 $row = $return->fetch(PDO::FETCH_ASSOC);
 
 
- if (empty($row)){
-     echo "You can not login";
-    header("location:../index.php?err=true");
- } else {
-     session_start();
+if(isset($_POST["submit"])){
+    $errors = false;
+    $errorMessages = "";
+
+    // check if username is empty
+    if(empty($_POST["username"])){
+        $errors = true;
+        $errorMessages= "Name cannot be empty!";
+        header("location:loginform.php?err=$errors&message=$errorMessages");
+        exit;
+    } else {
+        session_start();
      $_SESSION ['user__name'] = $row['username'];
-     $_SESSION ['user__password'] = $row['password'];
-    
      header("location:../index.php");
-   
+     
  }
+
+}
+
+if(empty($_POST['password'])){
+    $errors = true;
+    $errorMessages= "Password cannot be empty!";
+    header("location:loginform.php?err=$errors&message=$errorMessages");
+    exit;
+}else{
+    session_start();
+    $_SESSION ['user__password'] = $row['password'];
+}
+header("location:../index.php");
 
 ?>
