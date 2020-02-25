@@ -8,9 +8,7 @@ session_start();
 // echo(isset($_SESSION['username']) ? "Welcome" . $_SESSION['username'] : '');
 if (isset($_GET['err']) && $_GET['err'] == true){
 echo "you are a new user!";
-}
-
-elseif (isset($_SESSION['user__name'])){
+}elseif(isset($_SESSION['user__name'])){
 
     echo "Hello!! " . $_SESSION['user__name'] . "!<br/>";
     echo '<a href = "views/logout.php">Log out!</a>';
@@ -29,6 +27,8 @@ if($page=="about"){
     include("views/post.php");
 }elseif($page=="login"){
     include("views/loginform.php");
+}elseif($page=="signup"){
+    include("views/signupform.php");
 }else{
     include("views/home.php");
 }

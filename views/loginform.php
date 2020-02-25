@@ -8,8 +8,8 @@
     
 <div class="center">
 
-<?php
-         if(isset($_GET['err']) && $_GET['err']=true){
+      <?php
+         if(isset($_GET['err']) && $_GET['err']==true){
             echo "Wrong!". $_GET['message']."<br>";
          }
        ?>
@@ -18,7 +18,7 @@
     
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password" >
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" name="submit">
 
     </form>
 
