@@ -87,7 +87,7 @@ if(isset($_POST["submit"])){
           $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
           echo "Sign up sucess!";
-          echo "<a href=\"index.php\">Start nu</a>";
+          echo "<a href=\"../index.php\">Start now</a>";
         }
   }
 ?>
