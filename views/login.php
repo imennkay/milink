@@ -5,7 +5,6 @@ include("../includes/db.php");
 // $userName = (!empty($_POST['username']) ? $_POST['username'] : "");
 // $userPassword = (!empty($_POST['password']) ? $_POST['password'] : "");
 
-
 if(isset($_POST["submit"])){
     $errorMessages = "";
 
@@ -18,6 +17,7 @@ if(isset($_POST["submit"])){
         $userName = $_POST['username'];
     }
 
+    // check if password is empty
     if(empty($_POST['password'])){
 
         $errorMessages= "Password cannot be empty!";
@@ -27,22 +27,30 @@ if(isset($_POST["submit"])){
         $userPassword = md5($_POST['password']);
     }
 
-    $query= "SELECT username, password from users where username = '$userName' and password ='$userPassword'";
-
-    $return = $dbh->query($query);
-
-    $row = $return->fetch(PDO::FETCH_ASSOC);  
-
-    if(empty($row)){
-        $errorMessages= "You haven't signup!";
+    // check if username and password are correct
+    $query= "SELECT id, username, password from users where username = :userName and password =:userPassword";
+    $stmt = $dbh->prepare($query);
+    $stmt->bindParam(':userName', $userName);
+    $stmt->bindParam(':userPassword', $userPassword);
+    $return=$stmt->execute();
+    
+    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        $userId=$row['id'];
+    }
+    if(empty($return)){
+        $errorMessages= "You are a new user!";
         header("location:../index.php?page=login&err=true&message=$errorMessages");
     }else{
         session_start();
+        $_SESSION['user__id'] = $userId;
         $_SESSION['user__name'] = $_POST['username'];
         $_SESSION['user__password'] = $_POST['password'];
-        header("location:../index.php");
-    }
+        // echo $_GET['postId'];
+        // die;
+        if(isset($_GET['postId'])){
+            header("location:../index.php?page=post&postId=" .$_GET['postId']);
+        }else  header("location:../index.php");
+    } 
 }
-
-
+    
 ?>
