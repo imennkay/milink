@@ -17,6 +17,7 @@
          <p>Sign up</p>
            <form action="views/signup.php" method="POST">
               <input type="text" name="username" placeholder="Username"><span>*</span><br>
+              <input type="email" name="email" placeholder="Email"><span>*</span><br>
               <input type="password" name="password" placeholder="Password"><span>*</span><br>
               <input type="password" name="password_confirm" placeholder="Confirm password"><span>*</span><br>
               <input type="submit" value="Signup" name="submit"><br>

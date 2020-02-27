@@ -28,6 +28,26 @@ if(isset($_POST["submit"])){
         }
     }
 
+    if(empty($_POST["email"])){
+      $errors = true;
+      $errorMessages= "Please type your email!";
+      header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+      exit;
+  }else{
+        $eMail = $_POST['email'];
+        $sql="select email, created_date from users where email=:eMail";
+        $stmt=$dbh->prepare($sql);
+        $stmt->bindParam(':eMail', $eMail);
+        $stmt->execute();
+        $data=$stmt->fetch(PDO::FETCH_ASSOC);
+        if(!empty($data)){
+        $errors = true;
+        $errorMessages= "Email has been occupied. Please choose a new one.";
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+        exit;
+      }
+  }
+
     if(empty($_POST['password'])){
         $errors = true;
         $errorMessages= "Password cannot be empty!";
@@ -54,15 +74,17 @@ if(isset($_POST["submit"])){
     }
 
 // if all above  requirements are filled, insert into database
-        $sql="Insert into users(username, password) values(:userName,:passWord1)";
+        $sql="INSERT INTO users(username, email, password) VALUES(:userName, :eMail, :passWord1)";
         $stmt=$dbh->prepare($sql);
         $stmt->bindParam(':userName', $userName);
+        $stmt->bindParam(':eMail', $eMail);
         $stmt->bindParam(':passWord1', $passWord1);
         $return=$stmt->execute();
         if(!$return){
         print_r($dbh->errorInfo());
         }else{
           $_SESSION['user_name']=$userName;
+          $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
           echo "Sign up sucess!";
           echo "<a href=\"index.php\">Start nu</a>";
