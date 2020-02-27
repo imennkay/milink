@@ -27,7 +27,11 @@ if(isset($_POST["submit"])){
           exit;
         }
     }
+<<<<<<< HEAD
     // checi if email is empty and occupied
+=======
+
+>>>>>>> cc14d0df462435a0aa83be217b3dc887852ef909
     if(empty($_POST["email"])){
       $errors = true;
       $errorMessages= "Please type your email!";
@@ -44,9 +48,16 @@ if(isset($_POST["submit"])){
         $errors = true;
         $errorMessages= "Email has been occupied. Please choose a new one.";
         header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+<<<<<<< HEAD
         exit;}
       }
     // check if password is empty
+=======
+        exit;
+      }
+  }
+
+>>>>>>> cc14d0df462435a0aa83be217b3dc887852ef909
     if(empty($_POST['password'])){
         $errors = true;
         $errorMessages= "Password cannot be empty!";
@@ -74,13 +85,23 @@ if(isset($_POST["submit"])){
     }
 
 // if all above  requirements are filled, insert into database
+<<<<<<< HEAD
         $sql="Insert into users(username, email, password) values(?, ?, ?)";
         $stmt=$dbh->prepare($sql);
         $return=$stmt->execute([$userName, $eMail, $passWord1]);
+=======
+        $sql="INSERT INTO users(username, email, password) VALUES(:userName, :eMail, :passWord1)";
+        $stmt=$dbh->prepare($sql);
+        $stmt->bindParam(':userName', $userName);
+        $stmt->bindParam(':eMail', $eMail);
+        $stmt->bindParam(':passWord1', $passWord1);
+        $return=$stmt->execute();
+>>>>>>> cc14d0df462435a0aa83be217b3dc887852ef909
         if(!$return){
         print_r($dbh->errorInfo());
         }else{
           $_SESSION['user_name']=$userName;
+          $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
           $_SESSION['e_mail']=$eMail;
           echo "Sign up sucess!";
