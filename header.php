@@ -22,7 +22,13 @@
            <li><a href="index.php">Home</a></li>
            <li><a href="index.php?page=post">Post</a></li>
            <li><a href="index.php?page=about">About</a></li>
-           <li><a href="index.php?page=login">Login</a></li>
-           <li><a href="index.php?page=signup">Sign up</a></li>
+           <?php
+               if(isset($_SESSION['user__name'])){
+                   echo "<li><a href=\"index.php?page=logout\">Log out</a></li>";
+               }else{
+                echo "<li><a href=\"index.php?page=login\">Login</a></li>";
+                echo "<li><a href=\"index.php?page=signup\">Sign up</a></li>";
+               }
+           ?>
        </ul>
     </nav>
