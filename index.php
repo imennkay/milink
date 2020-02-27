@@ -1,14 +1,13 @@
 <?php
-
+session_start();
 include("header.php");
 include("includes/db.php");
 
-session_start();
+
 //echo (isset($_GET['err']) && $_GET['err'] == true ? "something went wrong!" : "");
 // echo(isset($_SESSION['username']) ? "Welcome" . $_SESSION['username'] : '');
 if(isset($_SESSION['user__name'])){
     echo "Hello!! " . $_SESSION['user__name'] . "!<br/>";
-    echo '<a href = "views/logout.php">Log out!</a>';
 
 }else {
     include ("views/home.php");
@@ -25,6 +24,8 @@ if($page=="about"){
     include("views/loginform.php");
 }elseif($page=="signup"){
     include("views/signupform.php");
+}elseif($page=="logout"){
+    include("views/logout.php");
 }else{
     include("views/home.php");
 }
