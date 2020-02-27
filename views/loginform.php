@@ -14,7 +14,12 @@
          }
        ?>
     <p>Login</p>
-    <form action="views/login.php" method="post">
+    <?php
+         // if user is reading post and login in, then go to post page.
+         if(isset($_GET['postId'])){
+            echo "<form action=\"views/login.php?postId=".$_GET['postId']."\" method=\"post\">";
+         }else echo "<form action=\"views/login.php\" method=\"post\">";
+       ?>
     
     <input type="text" name="username" placeholder="Username"><br />
     <input type="password" name="password" placeholder="Password" ><br />

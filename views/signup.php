@@ -27,7 +27,6 @@ if(isset($_POST["submit"])){
           exit;
         }
     }
-
     if(empty($_POST["email"])){
       $errors = true;
       $errorMessages= "Please type your email!";
@@ -56,6 +55,7 @@ if(isset($_POST["submit"])){
     }else{
       $passWord1 = md5($_POST['password']);
     }
+    
 
     if(empty($_POST['password_confirm'])){
       $errors = true;
@@ -74,20 +74,18 @@ if(isset($_POST["submit"])){
     }
 
 // if all above  requirements are filled, insert into database
-        $sql="INSERT INTO users(username, email, password) VALUES(:userName, :eMail, :passWord1)";
+        $sql="Insert into users(username, email, password) values(?, ?, ?)";
         $stmt=$dbh->prepare($sql);
-        $stmt->bindParam(':userName', $userName);
-        $stmt->bindParam(':eMail', $eMail);
-        $stmt->bindParam(':passWord1', $passWord1);
-        $return=$stmt->execute();
+        $return=$stmt->execute([$userName, $eMail, $passWord1]);
         if(!$return){
         print_r($dbh->errorInfo());
         }else{
           $_SESSION['user_name']=$userName;
           $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
+          $_SESSION['e_mail']=$eMail;
           echo "Sign up sucess!";
-          echo "<a href=\"../index.php\">Start now</a>";
+          echo "<a href=\"../index.php\">Start nu</a>";
         }
   }
 ?>
