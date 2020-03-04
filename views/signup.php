@@ -23,15 +23,11 @@ if(isset($_POST["submit"])){
           if(!empty($data)){
           $errors = true;
           $errorMessages= "Username has been occupied. Please choose a new one.";
-          header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+          header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName");
           exit;
         }
     }
-<<<<<<< HEAD
     // checi if email is empty and occupied
-=======
-
->>>>>>> cc14d0df462435a0aa83be217b3dc887852ef909
     if(empty($_POST["email"])){
       $errors = true;
       $errorMessages= "Please type your email!";
@@ -47,21 +43,14 @@ if(isset($_POST["submit"])){
         if(!empty($data)){
         $errors = true;
         $errorMessages= "Email has been occupied. Please choose a new one.";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
-<<<<<<< HEAD
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
         exit;}
       }
     // check if password is empty
-=======
-        exit;
-      }
-  }
-
->>>>>>> cc14d0df462435a0aa83be217b3dc887852ef909
     if(empty($_POST['password'])){
         $errors = true;
         $errorMessages= "Password cannot be empty!";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
         exit;
     }else{
       $passWord1 = md5($_POST['password']);
@@ -71,7 +60,7 @@ if(isset($_POST["submit"])){
     if(empty($_POST['password_confirm'])){
       $errors = true;
       $errorMessages= "Confirm password cannot be empty!";
-      header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+      header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
       exit;
     }else{
       $passWord2 = md5($_POST['password_confirm']);
@@ -80,23 +69,14 @@ if(isset($_POST["submit"])){
     if($_POST['password'] != $_POST['password_confirm']){
         $errors = true;
         $errorMessages= "Password are not the same!";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
         exit;
     }
 
 // if all above  requirements are filled, insert into database
-<<<<<<< HEAD
         $sql="Insert into users(username, email, password) values(?, ?, ?)";
         $stmt=$dbh->prepare($sql);
         $return=$stmt->execute([$userName, $eMail, $passWord1]);
-=======
-        $sql="INSERT INTO users(username, email, password) VALUES(:userName, :eMail, :passWord1)";
-        $stmt=$dbh->prepare($sql);
-        $stmt->bindParam(':userName', $userName);
-        $stmt->bindParam(':eMail', $eMail);
-        $stmt->bindParam(':passWord1', $passWord1);
-        $return=$stmt->execute();
->>>>>>> cc14d0df462435a0aa83be217b3dc887852ef909
         if(!$return){
         print_r($dbh->errorInfo());
         }else{
@@ -104,8 +84,7 @@ if(isset($_POST["submit"])){
           $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
           $_SESSION['e_mail']=$eMail;
-          echo "Sign up sucess!";
-          echo "<a href=\"../index.php\">Start nu</a>";
+          header("location:../index.php?page=login");
         }
   }
 ?>

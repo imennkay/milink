@@ -8,10 +8,13 @@ body{
 }
 /* styles for navbar */
 nav{
+    background-color:  #477998;
+    padding: 0 2rem;
+    font-size: 1.3rem;
     height: 10vh;
     display: flex;
-    justify-content: center;
-    position: sticky;
+    justify-content: space-between;
+    align-items: center;
 }
 .nav-links{
     display:flex;
@@ -20,39 +23,362 @@ nav{
     list-style: none;
     width: 50%;
     height: 100%;
-
+    margin-bottom: 0;
+}
+.hamburger{
+    visibility: hidden;
 }
 .nav-links li a{
     text-decoration: none;
-    color:silver;
-   
+    color: silver;
 }
-/* styles for header */
-.header{
-    height: 60vh;
-    width:80%;
-    margin: auto;
-    
-    background: url("../images/rose-near-watch-big.jpg");
-    background-position: center;
-    background-size: cover;
+.nav-links li a:hover{
+    text-decoration: none;
+    color: rgb(214, 205, 205);
+}
+nav .username{
+    color: silver;
+}
+nav .username:hover{
+    color: silver;
+}
+.user-image{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+/* styles for Home  */
+.video-container{ 
+    margin:1.5rem 0;
     display: flex;
     justify-content: center;
-    align-items: center;
+}
+.vid{
+    border:1px solid silver;
+    margin-left: .5rem;
+}
+.post-title{
+    margin-top: 4rem;
+    text-align: center;
+    color: silver;
+}
+/* styles for search form */
+.search-form{
+    width: 50%;
+    margin: 1rem auto;
+    display: flex;
+}
+.search-form input{
+    border: 1px solid silver;
+}
+.search-form button{
+    height: 3rem;
+    width: 3rem;
+    margin: .5rem 0;
+    border: none;
+    border-radius: 5px;
+}
+.search-title{
+    text-align: center;
+}
 
+/* styles for loginform */
+.loginform, .signup-form{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.header h1{
-    letter-spacing: 2px;
+.center{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 25rem;
+    height: 30rem;
+    background:linear-gradient(to right, #74ebd5, #acb6e5);
+    margin: 0 auto;
+    border-radius: 1rem;
+    padding: 1rem;
 }
+.login-icon{
+    background-color: white;
+    width: 6.5rem;
+    height: 6.5rem;
+    border: 1px solid white;
+    border-radius: 55px;
+    text-align: center;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+.fa-user{
+    font-size: 4.5rem;
+    color: #74ebd5;
+}
+input{
+   margin:.5rem 0;
+   width: 100%;
+   padding: .5rem;
+   border-radius: 5px;
+   border: 1 solid silver;
+}
+input[type=submit]{
+   margin-top: 2rem;
+   background-color: #477998;
+   border: none;
+   color: white;
+   cursor: pointer;
+}
+.signup-btn{
+    border-radius: 5px;
+    padding:.3rem 1.5rem;
+    border: 1px solid #477998;
+    background-color: white;
+    color: #477998;
+    cursor: pointer;
+    margin-top: 4rem;
+}
+.signup-btn a{
+    text-decoration: none;
+}
+.error{
+    color: red;
+}
+
+/* styles for post list */
 .post-session{
     width:80%;
-    margin: auto;
-    margin-top: 5rem;
+    margin:3rem auto;
 }
 .card-img{
+    max-width:80%;
     max-height: 300px;
-    width:100%;
 }
 .card-title{
     font-size: 2rem;
+}
+/* .showmore{
+    display: block;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: silver;
+    margin: 2rem 0;
+    text-align: center;
+}
+.showmore:hover{
+    color:gray;
+} */
+
+/* styles for singlepost */
+.singlepost{
+    width:80%;
+    margin:3rem auto;
+}
+.card{
+    padding: 1rem;
+}
+.card-head{
+    font-family:'Rajdhani', sans-serif;
+    font-style: italic;
+}
+
+/* styles for comment results */
+.comment-results-container{
+    width:80%;
+    margin:1rem auto;
+    border:1px solid silver;
+    padding: 1rem;
+}
+.comment-results-container p{
+    margin: 1rem 0 0 1rem;
+    display: inline;
+}
+.comment-date{
+    text-align: end;
+}
+.comment-results{
+    margin: 1rem 2rem;
+}
+
+/* styles for comment */
+.login-comment, .comment-form{
+    width:80%;
+    margin:0 auto;
+    
+    border:1px solid silver;
+}
+ .comment-form p{
+    margin: 1rem 0 0 1rem;
+}
+.login-comment p{
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: .8rem;
+}
+textarea{
+    width: 90%;
+    border: none;
+    margin: 0 2rem;
+    padding: 1rem 2rem;
+}
+.comment-btn{
+    display: block;
+    border-radius: 5px;
+    padding:.5rem 1.5rem;
+    border: 1px solid #477998;
+    background-color: white;
+    color: #477998;
+    cursor: pointer;
+    width: 10rem;
+    margin-left: auto;
+}
+
+/* styles for loginform */
+
+.error{
+    color: red;
+}
+
+
+/* styles for about us */
+.about-us{
+    width:80%;
+    margin: 2rem auto;
+}
+.about-us h2{
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.about-us p{
+    font-size: 1.3rem;
+}
+.about-images{
+    display: flex;
+    justify-content: center;
+}
+.about-images img{
+    width: 350px;
+    height: 350px;
+    margin: 2rem 1rem;
+    border-radius: 15rem;
+}
+
+
+/* styles for footer */
+footer{
+    background: #35393C;
+}
+footer>hr{
+    background-color: white;
+}
+.footer-container{
+    margin: 2rem 4rem;
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    grid-gap:2rem;
+}
+h4{
+    color: #08BDBD;
+}
+.footer-right{
+    text-align: right;
+    color: white;
+}         
+.icons{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1rem;
+}
+.icons>a{
+    background:white;
+    color:#35393C;
+    padding-top: .5rem;
+    margin-left: 1rem;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+footer ul{
+    margin-top: 1.5rem;
+    list-style: none;
+}
+footer ul li{
+    margin-top: .5rem;
+    cursor: pointer;
+    color:white;
+}
+footer ul li:hover{
+    color:rgb(196, 194, 194);
+}
+.copyright p{
+       color: white;
+       text-align: center;
+       margin-bottom: 0;
+}
+
+/* break point */
+
+@media screen and (max-width:487px){
+    .video-container, .about-images{
+        flex-direction: column;
+    }
+    .about-images img{
+        margin-left: 0;
+    }
+    footer .footer-container{
+      grid-template-columns: 1fr;
+    }
+    .footer-right{
+        text-align: left;          
+    }
+    .icons{
+    justify-content: flex-start;
+    }
+    .icons>a{
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+}
+/* break point for navbar*/
+@media screen and (max-width:786px){
+    .nav-links{
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        z-index: 2;
+        background: linear-gradient(to right, #74ebd5, #acb6e5);
+        height: 100%;
+        width: 100%;
+        clip-path: circle(100px at 90% -20%);
+        -webkit-clip-path:circle(100px at 90% -20%);
+        transition: all 1s ease-out;
+        pointer-events: none;
+    }
+    .nav-links li a{
+        color: white;
+    }
+    .hamburger{
+        visibility: visible;
+        cursor: pointer;
+        z-index: 3;
+    }
+    .open{
+        clip-path: circle(1300px at 90% -20%);
+        -webkit-clip-path:circle(1300px at 90% -20%);
+        pointer-events: all;
+    }
+    .username{
+        z-index: 4;
+    }
+}
+
+@media screen and (max-width:786px){
+    footer .footer-container{
+      grid-template-columns: repeat(2, 1fr);
+    }
 }
