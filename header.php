@@ -6,7 +6,7 @@
     <title>
       <?php
           if(empty($title)){
-            echo "Min sida";
+            echo "Milink";
           }else echo $title;
       ?>
     </title>
@@ -28,9 +28,7 @@
            <li><a href="index.php?page=post">Post</a></li>
            <li><a href="index.php?page=about">About</a></li>
            <?php
-               if(isset($_SESSION['user__name'])){
-                echo "<li><a href=\"index.php?page=logout\">Log out</a></li>";
-               }else{
+               if(!isset($_SESSION['user__name'])){
                 echo "<li><a href=\"index.php?page=login\">Login/Sign up</a></li>";
                }
            ?>
@@ -38,8 +36,28 @@
        <div>
           <?php
                if(isset($_SESSION['user__name'])){
-                echo "<a class=\"username\">Hi ".$_SESSION['user__name']."!</a>";
-               }
+                $userId=$_SESSION['user__id'];
+                $sql="select image from users where id=:userId";
+                $stmt=$dbh->prepare($sql);
+                $stmt->bindParam(':userId', $userId);
+                $stmt->execute();
+                $data=$stmt->fetch(PDO::FETCH_ASSOC);
+                echo "<div class=\"popup\" onclick=\"showPopup()\">";
+                echo "<img class=\"user-image\" src=\"images/".$data['image']."\" alt=\"user image\"> Hi ".$_SESSION['user__name']."!";
+                echo "<div class=\"popuptext\" id=\"myPopup\">";
+                echo "<a href=\"views/logout.php\">Log out</a>";
+                echo "<a href=\"index.php?page=changePassword\">Change password</a>";
+                echo "<a href=\"index.php?page=uploadImage\">Change user image</a>";
+                echo "</div>";
+                echo "</div>";
+                }
           ?>
        </div>
+       <script>
+       // When the user clicks on username, open the popup
+        function showPopup() {
+           var popup = document.getElementById("myPopup");
+           popup.classList.toggle("show");
+        }
+       </script>
     </nav>

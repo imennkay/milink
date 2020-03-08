@@ -1,6 +1,6 @@
 <?php
-include("classes/comments.class.php");
 
+include("classes/comments.class.php");
 $postId=$_GET['postId'];
 
 $singlePostObj=new Posts($dbh);
@@ -24,7 +24,7 @@ $title="";
   $commentObj->fetchAll($postId);
   foreach($commentObj->getComments() as $comment){
      echo "<div class=\"comment-results-container\">";
-     echo "<p>".$comment['username']."</p>";
+     echo "<p><img class=\"user-image\" src=\"images/".$comment['image']."\" alt=\"user image\"> ".$comment['username']."</p>";
      echo "<p class=\"comment-date\">".$comment['created_date']. "</p>";
      echo "<div class=\"comment-results\">";
      echo $comment['content']." ";

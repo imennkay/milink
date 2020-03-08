@@ -2,11 +2,10 @@
        <div class="center">
        <?php
          if(isset($_GET['err']) && $_GET['err']=true){
-            echo "<p class=\"error\">Wrong!". $_GET['message']."<p>";
+            echo "<p class=\"error\">Wrong! ". $_GET['message']."<p>";
          }
          $userName=(isset($_GET['username']) ? $_GET['username']: "");
          $Email=(isset($_GET['email']) ? $_GET['email']: "");
-
        ?>
            <div class="login-icon"><i class="fas fa-user"></i></div>
            <form action="views/signup.php" method="POST">

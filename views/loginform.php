@@ -2,8 +2,9 @@
   <div class="center">
    <?php
          if(isset($_GET['err']) && $_GET['err']==true){
-            echo "<p class='error'>Wrong!". $_GET['message']."</p><br>";
+            echo "<p class='error'>Wrong!  ". $_GET['message']."</p>";
          }
+         $userName=(isset($_GET['username']) ? $_GET['username']: "");
    ?>
    <div class="login-icon"><i class="fas fa-user"></i></div>
    <?php
@@ -13,7 +14,7 @@
          }else echo "<form action=\"views/login.php\" method=\"post\">";
    ?>
     
-    <input type="text" name="username" placeholder="Username"><br />
+    <input type="text" name="username" placeholder="Username" value="<?php echo $userName; ?>"><br />
     <input type="password" name="password" placeholder="Password" ><br />
     <input type="submit" value="Login" name="submit"><br/>
     </form>

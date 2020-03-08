@@ -21,30 +21,37 @@ if(isset($_POST["submit"])){
           $stmt->execute();
           $data=$stmt->fetch(PDO::FETCH_ASSOC);
           if(!empty($data)){
-          $errors = true;
-          $errorMessages= "Username has been occupied. Please choose a new one.";
-          header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName");
-          exit;
-        }
+            $errors = true;
+            $errorMessages= "Username has been occupied. Please choose a new one.";
+            header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName");
+            exit;}
     }
-    // checi if email is empty and occupied
+    // checi if email is empty
     if(empty($_POST["email"])){
       $errors = true;
       $errorMessages= "Please type your email!";
       header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
       exit;
   }else{
+       // checi if email valid
         $eMail = $_POST['email'];
-        $sql="select email, created_date from users where email=:eMail";
-        $stmt=$dbh->prepare($sql);
-        $stmt->bindParam(':eMail', $eMail);
-        $stmt->execute();
-        $data=$stmt->fetch(PDO::FETCH_ASSOC);
-        if(!empty($data)){
-        $errors = true;
-        $errorMessages= "Email has been occupied. Please choose a new one.";
+        if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
+        $$errorMessages = "Invalid email format";
         header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
-        exit;}
+        exit;
+        }else{
+          // checi if email is occupied
+           $sql="select email, created_date from users where email=:eMail";
+           $stmt=$dbh->prepare($sql);
+           $stmt->bindParam(':eMail', $eMail);
+           $stmt->execute();
+           $data=$stmt->fetch(PDO::FETCH_ASSOC);
+           if(!empty($data)){
+           $errors = true;
+           $errorMessages= "Email has been occupied. Please choose a new one.";
+           header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
+           exit;}
+         }
       }
     // check if password is empty
     if(empty($_POST['password'])){
@@ -56,7 +63,7 @@ if(isset($_POST["submit"])){
       $passWord1 = md5($_POST['password']);
     }
     
-
+   // check if confirmed password is empty
     if(empty($_POST['password_confirm'])){
       $errors = true;
       $errorMessages= "Confirm password cannot be empty!";
@@ -65,7 +72,7 @@ if(isset($_POST["submit"])){
     }else{
       $passWord2 = md5($_POST['password_confirm']);
     }
-
+    // check if password and confirmed password are matched
     if($_POST['password'] != $_POST['password_confirm']){
         $errors = true;
         $errorMessages= "Password are not the same!";
@@ -73,7 +80,7 @@ if(isset($_POST["submit"])){
         exit;
     }
 
-// if all above  requirements are filled, insert into database
+// if all above  requirements are filled, insert user information into database
         $sql="Insert into users(username, email, password) values(?, ?, ?)";
         $stmt=$dbh->prepare($sql);
         $return=$stmt->execute([$userName, $eMail, $passWord1]);

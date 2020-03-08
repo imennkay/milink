@@ -27,7 +27,7 @@ class Comments{
 
     public function fetchAll($postId){
       
-        $sql="SELECT username, postId, userId, content, c.created_date from comment as c inner join users as u
+        $sql="SELECT u.username, u.image, c.postId, c.userId, c.content, c.created_date from comment as c inner join users as u
         on c.userId=u.id where postId=? order by c.created_date desc";
         $stmt=$this->databaseHandler->prepare($sql);
         $return=$stmt->execute([$postId]);

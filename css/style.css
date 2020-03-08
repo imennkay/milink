@@ -6,9 +6,12 @@
 body{
     font-family: Arial,Helvetica,sans-serif;
 }
-/* styles for navbar */
+/* ------ styles for navbar -------*/
 nav{
     background-color:  #477998;
+    position: sticky;
+    top:0;
+    z-index: 1;
     padding: 0 2rem;
     font-size: 1.3rem;
     height: 10vh;
@@ -34,21 +37,80 @@ nav{
 }
 .nav-links li a:hover{
     text-decoration: none;
-    color: rgb(214, 205, 205);
+    color: rgb(224, 205, 205);
 }
 nav .username{
     color: silver;
+    cursor: pointer;
 }
 nav .username:hover{
-    color: silver;
+    color: rgb(224, 205, 205);
 }
 .user-image{
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
 }
 
-/* styles for Home  */
+/* Popup container - can be anything you want */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    color: silver;
+}
+
+/* The actual popup */
+.popup .popuptext {
+    visibility: hidden;
+    width: 250px;
+    background-color: white;
+    border: 1px solid silver;
+    padding: 4px 0;
+    position: absolute;
+    z-index: 1;
+    top: 140%;
+    right: 0;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: 80px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent silver transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+.popup a{
+    display: block;
+    margin: 1rem 1rem;
+    color: #477998;
+    text-decoration: none;
+}
+.popup a:hover{
+    color: #76acce;
+}
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+/* ------ styles for Home page ------*/
 .video-container{ 
     margin:1.5rem 0;
     display: flex;
@@ -63,7 +125,7 @@ nav .username:hover{
     text-align: center;
     color: silver;
 }
-/* styles for search form */
+/* ------ styles for search form -------*/
 .search-form{
     width: 50%;
     margin: 1rem auto;
@@ -83,12 +145,15 @@ nav .username:hover{
     text-align: center;
 }
 
-/* styles for loginform */
+/*------ styles for login form, signup form and change password form------*/
 .loginform, .signup-form{
     height: 90vh;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.loginform p, .signup-form p{
+    margin-bottom: 0;
 }
 .center{
     display: flex;
@@ -97,28 +162,31 @@ nav .username:hover{
     width: 25rem;
     height: 30rem;
     background:linear-gradient(to right, #74ebd5, #acb6e5);
-    margin: 0 auto;
+    margin: 3rem auto;
     border-radius: 1rem;
     padding: 1rem;
 }
 .login-icon{
     background-color: white;
-    width: 6.5rem;
-    height: 6.5rem;
+    width: 5rem;
+    height: 5rem;
     border: 1px solid white;
-    border-radius: 55px;
+    border-radius: 40px;
     text-align: center;
     padding-top: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
 }
 .fa-user{
-    font-size: 4.5rem;
+    font-size: 3rem;
     color: #74ebd5;
+}
+.loginform form, .signup-form form{
+    margin-top: 2rem;
 }
 input{
    margin:.5rem 0;
    width: 100%;
-   padding: .5rem;
+   padding: .3rem .5rem;
    border-radius: 5px;
    border: 1 solid silver;
 }
@@ -136,7 +204,7 @@ input[type=submit]{
     background-color: white;
     color: #477998;
     cursor: pointer;
-    margin-top: 4rem;
+    margin-top: 6rem;
 }
 .signup-btn a{
     text-decoration: none;
@@ -144,8 +212,44 @@ input[type=submit]{
 .error{
     color: red;
 }
+.uploadImageform p, .changePasswordform p{
+    margin-top: 5rem;
+    color: black;
+}
+.uploadImageform form{
+    margin-top: 4rem;
+}
 
-/* styles for post list */
+/* loginform size changes when screen height is less than 400px. */
+@media screen and (max-height:400px){
+    .loginform, .signup-form{
+        height: auto;
+    }
+    .center{
+        width: 19rem;
+        height: 23rem;
+    }
+    .login-icon{
+        width: 3rem;
+        height: 3rem;
+        border-radius: 40px;
+    }
+    .fa-user{
+        font-size: 2rem;
+        color: #74ebd5;
+    }
+    input{
+        margin:.3rem 0;
+        width: 100%;
+        padding: .2rem;
+        border-radius: 5px;
+        border: 1 solid silver;
+     }
+     .signup-btn{
+        margin-top: 4rem;
+     }
+}
+/*------ styles for post list ------*/
 .post-session{
     width:80%;
     margin:3rem auto;
@@ -169,7 +273,7 @@ input[type=submit]{
     color:gray;
 } */
 
-/* styles for singlepost */
+/*------ styles for singlepost ------*/
 .singlepost{
     width:80%;
     margin:3rem auto;
@@ -182,7 +286,7 @@ input[type=submit]{
     font-style: italic;
 }
 
-/* styles for comment results */
+/*------ styles for comment results ------*/
 .comment-results-container{
     width:80%;
     margin:1rem auto;
@@ -200,14 +304,13 @@ input[type=submit]{
     margin: 1rem 2rem;
 }
 
-/* styles for comment */
+/*------ styles for comment ------*/
 .login-comment, .comment-form{
     width:80%;
-    margin:0 auto;
-    
+    margin:0 auto 1rem;
     border:1px solid silver;
 }
- .comment-form p{
+.comment-form p{
     margin: 1rem 0 0 1rem;
 }
 .login-comment p{
@@ -218,29 +321,20 @@ input[type=submit]{
 textarea{
     width: 90%;
     border: none;
-    margin: 0 2rem;
+    margin: 0 1rem;
     padding: 1rem 2rem;
 }
 .comment-btn{
     display: block;
     border-radius: 5px;
     padding:.5rem 1.5rem;
-    border: 1px solid #477998;
-    background-color: white;
-    color: #477998;
     cursor: pointer;
     width: 10rem;
     margin-left: auto;
+    margin-right: 1rem;
 }
 
-/* styles for loginform */
-
-.error{
-    color: red;
-}
-
-
-/* styles for about us */
+/*------ styles for about us ------*/
 .about-us{
     width:80%;
     margin: 2rem auto;
@@ -257,22 +351,22 @@ textarea{
     justify-content: center;
 }
 .about-images img{
-    width: 350px;
-    height: 350px;
-    margin: 2rem 1rem;
-    border-radius: 15rem;
+    display: block;
+    max-width: 20rem;
+    margin: 2rem auto;
+    clip-path: circle(50% at 50% 50%);
 }
 
 
-/* styles for footer */
+/*------ styles for footer ------*/
 footer{
     background: #35393C;
 }
-footer>hr{
+footer hr{
     background-color: white;
 }
 .footer-container{
-    margin: 2rem 4rem;
+    margin: 0 4rem;
     padding: 1rem 0;
     display: grid;
     grid-template-columns: 1fr 1fr 2fr;
@@ -320,31 +414,10 @@ footer ul li:hover{
        margin-bottom: 0;
 }
 
-/* break point */
+/*------ break point ------*/
 
-@media screen and (max-width:487px){
-    .video-container, .about-images{
-        flex-direction: column;
-    }
-    .about-images img{
-        margin-left: 0;
-    }
-    footer .footer-container{
-      grid-template-columns: 1fr;
-    }
-    .footer-right{
-        text-align: left;          
-    }
-    .icons{
-    justify-content: flex-start;
-    }
-    .icons>a{
-        margin-left: 0;
-        margin-right: 1rem;
-    }
-}
-/* break point for navbar*/
-@media screen and (max-width:786px){
+/*------ break point for navbar------*/
+@media only screen and (max-width:786px){
     .nav-links{
         flex-direction: column;
         position: fixed;
@@ -354,8 +427,8 @@ footer ul li:hover{
         background: linear-gradient(to right, #74ebd5, #acb6e5);
         height: 100%;
         width: 100%;
-        clip-path: circle(100px at 90% -20%);
-        -webkit-clip-path:circle(100px at 90% -20%);
+        clip-path: circle(100px at 90% -30%);
+        -webkit-clip-path:circle(100px at 90% -30%);
         transition: all 1s ease-out;
         pointer-events: none;
     }
@@ -376,9 +449,34 @@ footer ul li:hover{
         z-index: 4;
     }
 }
-
-@media screen and (max-width:786px){
+/*------ break point for footer------*/
+@media only screen and (max-width:786px){
+    .video-container, .about-images{
+        flex-direction: column;
+    }
     footer .footer-container{
-      grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-right{
+        text-align: left;          
+    }
+    .icons{
+    justify-content: flex-start;
+    }
+    .icons>a{
+        margin-left: 0;
+        margin-right: 1rem;
+    }
+    
+}
+@media only screen and (max-width:694px){
+    footer .footer-container{
+        grid-template-columns: 1fr;
     }
 }
+@media only screen and (max-width:988px){
+    .about-images img{
+       max-width: 16rem;
+    }
+}
+
