@@ -14,11 +14,13 @@
       
        ?>
          <p>Sign up</p>
-           <form action="views/signup.php" method="POST">
+           <form action="views/signup.php" method="POST" enctype="multipart/form-data">
               <input type="text" name="username" placeholder="Username"><span>*</span><br>
               <input type="email" name="email" placeholder="Email"><span>*</span><br>
               <input type="password" name="password" placeholder="Password"><span>*</span><br>
               <input type="password" name="password_confirm" placeholder="Confirm password"><span>*</span><br>
+              <label>Image:</label>
+              <input type="file" name="user_image" id="user_image"><br>
               <input type="submit" value="Signup" name="submit"><br>
            </form>
         </div>

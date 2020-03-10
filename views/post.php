@@ -15,7 +15,7 @@ $postsObj->fetchAll();
       echo "<div class=\"card mb-3\">";
         echo "<div class=\"row no-gutter\">";
           echo "<div class=\"col-md-5\">";
-               echo "<img src=\"" .$post['image']. "\" class=\"card-img\" alt=\"image\">";
+               echo "<img src=\"images/" .$post['image']. "\" class=\"card-img\" alt=\"image\">";
           echo "</div>";
           echo "<div class=\"col-md-7\">";
              echo "<div class=\"card-body\">";

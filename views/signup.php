@@ -73,19 +73,47 @@ if(isset($_POST["submit"])){
         exit;
     }
 
-// if all above  requirements are filled, insert into database
-        $sql="Insert into users(username, email, password) values(?, ?, ?)";
+    if(empty($_FILES["user_image"])){
+      $errors = true;
+      $errorMessages= "Please upload your image!";
+      header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+      exit;
+  }else{
+        $userImage = $_FILES['user_image']["name"];
+        $sql="select image from users where image=:userImage";
         $stmt=$dbh->prepare($sql);
-        $return=$stmt->execute([$userName, $eMail, $passWord1]);
+        $stmt->bindParam(':userImage', $userImage);
+        $stmt->execute();
+        $data=$stmt->fetch(PDO::FETCH_ASSOC);
+        if(!empty($data)){
+        $errors = true;
+        $errorMessages= "image has been occupied. Please choose a new one.";
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+       }
+    
+      
+    }
+
+    $userImage = $_FILES["user_image"]["name"];
+    $userImage_temp = $_FILES["user_image"]["tmp_name"];
+    move_uploaded_file($userImage_temp,"../images/$userImage");
+
+
+// if all above  requirements are filled, insert into database
+        $sql="INSERT INTO users(username, email, password,image) values(?, ?, ?, ?)";
+        $stmt=$dbh->prepare($sql);
+        $return=$stmt->execute([$userName, $eMail, $passWord1, $userImage]);
         if(!$return){
         print_r($dbh->errorInfo());
         }else{
           $_SESSION['user_name']=$userName;
           $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
-          $_SESSION['e_mail']=$eMail;
+
+          
           echo "Sign up sucess!";
-          echo "<a href=\"../index.php\">Start nu</a>";
+          echo "<a href=\"../index.php\">Start now</a>";
         }
   }
+
 ?>

@@ -11,12 +11,15 @@ $title="";
     echo "<div class=\"singlepost\">";
       echo "<div class=\"card\" style=\"width: 80%;\">";
         echo "<div class=\"card-body\">";
-          echo "<h5 class=\"card-title\">".$post['title']."</h5>";
+        echo "<div class=\"col-md-5\">";
+        echo "<img src=\"images/" .$post['image']. "\" class=\"card-img\" alt=\"image\">";
+        echo "</div>";
+        echo "<h5 class=\"card-title\">".$post['title']."</h5>";
       //  $title=$post['tilte'];
-          echo "<p class=\"card-text\">".$post['description']."</p>";
+        echo "<p class=\"card-text\">".$post['description']."</p>";
        echo "</div>";
-      echo "</div>";
-    echo "</div>";
+       echo "</div>";
+       echo "</div>";
   }
 
   // create comment object and show all the comments to the post
