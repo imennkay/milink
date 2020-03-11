@@ -15,8 +15,6 @@ $title="";
           echo "<h5 class=\"card-title\">".$post['title']."</h5>";
           echo "<p class=\"card-text\">".$post['description']."</p>";
        echo "</div>";
-      echo "</div>";
-    echo "</div>";
   }
 
   // create comment object and show all the comments to the post
