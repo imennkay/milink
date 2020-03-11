@@ -96,7 +96,7 @@
              
               <td style="text-align: center;">
 
-                <button type="button" name="edit" class="btn btn-warning" data-toggle="modal" data-target="#EditPost" data-id_edit="<?= $view_post_id ?>" data-title_edit="<?= $view_post_title ?>" data-description_edit="<?= $view_post_text ?>"  data-created_date_edit="<?= $view_post_date ?>" data-image_edit="<?= $view_post_image ?>"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>
+                <button type="button" name="edit" class="btn btn-warning" data-toggle="modal" data-target="#EditPost" data-id_edit="<?= $view_post_id ?>" data-title_edit="<?= $view_post_title ?>" data-description_edit="<?= $view_post_text ?>" data-image_edit="<?= $view_post_image ?>"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>
 
                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeletePost" data-post_id_delete="<?= $view_post_id ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</button>
               </td>

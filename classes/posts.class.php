@@ -15,7 +15,7 @@ class Posts{
 
     public function fetchAll(){
       
-        $sql="SELECT p.id, title, description, p.image, category, username, p.created_date from posts as p inner join users as u on p.userId=u.id";
+        $sql="SELECT * from posts ORDER BY id desc";
         $return_array= $this->databaseHandler->query($sql);
         if($return_array){
             $this->posts=$return_array->fetchAll(PDO::FETCH_ASSOC);

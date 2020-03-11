@@ -1,24 +1,22 @@
 <?php
-      $current_date = date('d/m/Y');
       if (isset($_POST['edit_post']))
       {
         $edit_post_id=$_POST['id_edit'];
         $edit_post_title=$_POST['title_edit'];
+        $edit_post_text=$_POST['description_edit'];
         $edit_post_title = mysqli_real_escape_string($dbh,$edit_post_title);
-        $edit_post_date=$_POST['created_date_edit'];
-        //$edit_post_image=$_POST['post_image_edit'];
-        $new_post_image = $_FILES["image"]["name"];
-        $new_post_image_temp = $_FILES["image"]["tmp_name"];
-        move_uploaded_file($new_post_image_temp,"../images/$new_post_image");
+        $new_post_image = $_FILES["new_post_image"]["name"];
+        $new_post_image_temp = $_FILES["new_post_image"]["tmp_name"];
+        move_uploaded_file($new_post_image_temp,"../../images/$new_post_image");
         if (empty($new_post_image))
         {
-         $new_post_image=$_POST['image_edit'];
+         $new_post_image=$_POST['post_image_edit1'];
         }
 
         $edit_post_text=$_POST['description_edit'];
 
 
-        $sql_edit_post = "UPDATE posts SET title='$edit_post_title', description='$edit_post_text', image='$new_post_image', created_date='$edit_post_date' WHERE id={$edit_post_id}";
+        $sql_edit_post = "UPDATE posts SET title='$edit_post_title', description='$edit_post_text', image='$new_post_image' WHERE id={$edit_post_id}";
         $result_sql_edit_post= mysqli_query($dbh, $sql_edit_post);
         if (!$result_sql_edit_post)
                 {
@@ -50,19 +48,14 @@
                   <label for="title_edit" class="col-form-label">Title:</label>
                   <input type="text" class="form-control" id="title_edit" name="title_edit" placeholder="Enter Title Here">
                 </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                     
-                   
-                    
-                  </div><br>
+               <br>
                   <div class="form-group" id="foo">
-                    <input type="hidden" name="image_edit" id="image_edit">
+                    <input type="hidden" name="post_image_edit1" id="post_image_edit1">
                     
  <script>
 function mouseOver() {
    var image = document.getElementById('image');
-   var slikazaprikaz = document.getElementById("image_edit").value; 
+   var slikazaprikaz = document.getElementById("post_image_edit1").value; 
    var putanja = '../../images/';
    image.setAttribute('src', putanja + slikazaprikaz);
    
@@ -73,7 +66,7 @@ function mouseOver() {
                      <img  class="zoom" src="" id="image" name="image" width="50">
                      
                     <br><br>
-                      <input type="file" name="image" id="image">
+                      <input type="file" name="new_post_image" id="new_post_image">
 
                   </div>
                   <div class="form-group shadow-textarea">
@@ -83,10 +76,6 @@ function mouseOver() {
                     <script>
                        CKEDITOR.replace('post_text_edit');
                     </script>
-                  
-                  <div class="col-sm-2">
-                    <input type="hidden" name="created_date_edit" id="created_date_edit">
-                  </div>
                  
                 </div>
                 

@@ -3,6 +3,7 @@
       if (isset($_POST['save_post']))
       {
         $add_post_title=$_POST['title'];
+        $add_post_category=$_POST['category'];
         $add_post_title = mysqli_real_escape_string($dbh,$add_post_title);
         $add_post_autor=$_POST['userid'];
         $add_post_image=$_POST['post_image'];
@@ -55,7 +56,12 @@
 
 }
 </script>
-             
+<div class="modal-body">
+                <form method="post" action="" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="title" class="col-form-label">Category:</label>
+                  <input type="text" class="form-control" id="title" name="category" placeholder="Enter Category Here" required="">
+                </div>
                     <div class="col-sm-4">
                       <label for="userid" class="col-form-label">Author:</label>
                       <p><b><?php echo $success_login_username_admin; ?></b>  &nbsp;<img src="../../images/<?php echo $success_login_image_admin; ?>" class="zoom3" alt="User Image" width="50"></p>

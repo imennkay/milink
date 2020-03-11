@@ -114,7 +114,6 @@ $('#EditPost').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget)
   var id = button.data('id_edit')
   var title = button.data('title_edit')
-  var date = button.data('created_date_edit')
   var image = button.data('image_edit')
   var text = button.data('description_edit')
   
@@ -123,10 +122,9 @@ $('#EditPost').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-body #id_edit').val(id);
   modal.find('.modal-body #title_edit').val(title);
-  modal.find('.modal-body #created_date_edit').val(date);
-  modal.find('.modal-body #image_edit').val(image);
+  modal.find('.modal-body #post_image_edit1').val(image);
   modal.find('.modal-body #description_edit').val(text);
-  var slikazaprikaz = document.getElementById("image_edit").value; 
+  var slikazaprikaz = document.getElementById("post_image_edit1").value; 
 
 
 
