@@ -21,98 +21,77 @@ if(isset($_POST["submit"])){
           $stmt->execute();
           $data=$stmt->fetch(PDO::FETCH_ASSOC);
           if(!empty($data)){
-          $errors = true;
-          $errorMessages= "Username has been occupied. Please choose a new one.";
-          header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
-          exit;
-        }
+            $errors = true;
+            $errorMessages= "Username has been occupied. Please choose a new one.";
+            header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName");
+            exit;}
     }
+    // checi if email is empty
     if(empty($_POST["email"])){
       $errors = true;
       $errorMessages= "Please type your email!";
       header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
       exit;
   }else{
+       // checi if email valid
         $eMail = $_POST['email'];
-        $sql="select email, created_date from users where email=:eMail";
-        $stmt=$dbh->prepare($sql);
-        $stmt->bindParam(':eMail', $eMail);
-        $stmt->execute();
-        $data=$stmt->fetch(PDO::FETCH_ASSOC);
-        if(!empty($data)){
-        $errors = true;
-        $errorMessages= "Email has been occupied. Please choose a new one.";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+        if (!filter_var($eMail, FILTER_VALIDATE_EMAIL)) {
+        $$errorMessages = "Invalid email format";
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
         exit;
+        }else{
+          // checi if email is occupied
+           $sql="select email, created_date from users where email=:eMail";
+           $stmt=$dbh->prepare($sql);
+           $stmt->bindParam(':eMail', $eMail);
+           $stmt->execute();
+           $data=$stmt->fetch(PDO::FETCH_ASSOC);
+           if(!empty($data)){
+           $errors = true;
+           $errorMessages= "Email has been occupied. Please choose a new one.";
+           header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
+           exit;}
+         }
       }
-  }
-
+    // check if password is empty
     if(empty($_POST['password'])){
         $errors = true;
         $errorMessages= "Password cannot be empty!";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
         exit;
     }else{
       $passWord1 = md5($_POST['password']);
     }
     
-
+   // check if confirmed password is empty
     if(empty($_POST['password_confirm'])){
       $errors = true;
       $errorMessages= "Confirm password cannot be empty!";
-      header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+      header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
       exit;
     }else{
       $passWord2 = md5($_POST['password_confirm']);
     }
-
+    // check if password and confirmed password are matched
     if($_POST['password'] != $_POST['password_confirm']){
         $errors = true;
         $errorMessages= "Password are not the same!";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
+        header("location:../index.php?page=signup&err=$errors&message=$errorMessages&username=$userName&email=$eMail");
         exit;
     }
 
-    if(empty($_FILES["user_image"])){
-      $errors = true;
-      $errorMessages= "Please upload your image!";
-      header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
-      exit;
-  }else{
-        $userImage = $_FILES['user_image']["name"];
-        $sql="select image from users where image=:userImage";
+// if all above  requirements are filled, insert user information into database
+        $sql="Insert into users(username, email, password) values(?, ?, ?)";
         $stmt=$dbh->prepare($sql);
-        $stmt->bindParam(':userImage', $userImage);
-        $stmt->execute();
-        $data=$stmt->fetch(PDO::FETCH_ASSOC);
-        if(!empty($data)){
-        $errors = true;
-        $errorMessages= "image has been occupied. Please choose a new one.";
-        header("location:../index.php?page=signup&err=$errors&message=$errorMessages");
-       }
-    
-      
-    }
-
-    $userImage = $_FILES["user_image"]["name"];
-    $userImage_temp = $_FILES["user_image"]["tmp_name"];
-    move_uploaded_file($userImage_temp,"../images/$userImage");
-
-
-// if all above  requirements are filled, insert into database
-        $sql="INSERT INTO users(username, email, password,image) values(?, ?, ?, ?)";
-        $stmt=$dbh->prepare($sql);
-        $return=$stmt->execute([$userName, $eMail, $passWord1, $userImage]);
+        $return=$stmt->execute([$userName, $eMail, $passWord1]);
         if(!$return){
         print_r($dbh->errorInfo());
         }else{
           $_SESSION['user_name']=$userName;
           $_SESSION['e_mail']=$eMail;
           $_SESSION['pass_word']=$passWord1;
-
-          
-          echo "Sign up sucess!";
-          echo "<a href=\"../index.php\">Start now</a>";
+          $_SESSION['e_mail']=$eMail;
+          header("location:../index.php?page=login");
         }
   }
 

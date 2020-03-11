@@ -5,6 +5,7 @@
 
 
    print_r($_POST);
+   
    if(isset($_POST['submit'])){
       $postId=$_GET['postId'];
       $content=$_POST['comment'];

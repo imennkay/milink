@@ -19,7 +19,7 @@
       <div class="modal-body">
         <div class="form-group">
             <input type="hidden" class="form-control" id="post_id_delete" name="post_id_delete">
-            <p align="center"><img src="admin-template/images/delete.png" width="25" align="middle">
+            <p align="center"><img src="../../images/delete.png" width="25" align="middle">
             Are you sure you want to delete this post?</p>
         </div>
       </div>

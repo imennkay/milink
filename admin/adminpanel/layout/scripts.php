@@ -44,8 +44,7 @@ $('#EditUser').on('show.bs.modal', function (event) {
   var type = button.data('user_type_edit')
   var gender = button.data('user_gender_edit')
   var password = button.data('user_password_edit')
-  //var user_image = button.data('user_image_edit')
-  //var type1 = button.data('user_type_edit_select')
+
   if(type == 0) {
     document.getElementById("p1").innerHTML ='<label for="user_type" class="col-form-label"> User type:</label>'+
                       '<select class="form-control" id="user_type_edit_select" name="user_type_edit_select">'+
@@ -77,9 +76,7 @@ $('#EditUser').on('show.bs.modal', function (event) {
   modal.find('.modal-body #confirm_password_edit').val(password);
   modal.find('.modal-body #user_image_edit').val(image_user);
 
-  //modal.find('.modal-body #testg').val(gender);
-  //modal.find('.modal-body #user_name_write').val(name);
- //modal.find('.modal-body #t').val(type1);
+  
  mouseOverUser(this);
 if(gender == 1) {
     document.getElementById("p2").innerHTML ='<label for="cat_title" class="col-form-label"> Gender:</label><br>'+
@@ -99,26 +96,18 @@ $('#DeleteUser').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var user_id_delete = button.data('user_id_delete') // Extract info from data-* attributes
 
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  //modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body #user_id_delete').val(user_id_delete);
 
- // modal.find('.modal-body ozakadrzave').val(ozakadrzave)
 }) 
 
 $('#DeletePost').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var post_id_delete = button.data('post_id_delete') // Extract info from data-* attributes
 
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  //modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body #post_id_delete').val(post_id_delete);
 
- // modal.find('.modal-body ozakadrzave').val(ozakadrzave)
 })
 
 $('#EditPost').on('show.bs.modal', function (event) {
@@ -153,13 +142,9 @@ mouseOver(this); //LOAD IMAGE
   var button = $(event.relatedTarget) // Button that triggered the modal
   var comment_id_delete = button.data('comment_id_delete') // Extract info from data-* attributes
 
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
   var modal = $(this)
-  //modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body #comment_id_delete').val(comment_id_delete);
 
- // modal.find('.modal-body ozakadrzave').val(ozakadrzave)
 }) 
  
 
@@ -167,76 +152,7 @@ mouseOver(this); //LOAD IMAGE
  
 </script>
 
-<script>
-            $('#selectAllCategoryCheckbox').click(function(event) {   
-          if(this.checked) {
-              // Iterate each checkbox
-              $(':checkbox').each(function() {
-                  this.checked = true;                        
-              });
-          } else {
-              $(':checkbox').each(function() {
-                  this.checked = false;                       
-              });
-          }
-      });
-  </script>
-  
-  <script>
-            $('#selectAllCommentCheckbox').click(function(event) {   
-          if(this.checked) {
-              // Iterate each checkbox
-              $(':checkbox').each(function() {
-                  this.checked = true;                        
-              });
-          } else {
-              $(':checkbox').each(function() {
-                  this.checked = false;                       
-              });
-          }
-      });
-  </script>
 
 
-  <script>
-  var password = document.getElementById("user_password")
-  , confirm_password = document.getElementById("confirm_password");
 
-function validatePassword(){
-  if(password.value != confirm_password.value) {
-    confirm_password.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password.setCustomValidity('');
-  }
-}
 
-password.onchange = validatePassword;
-confirm_password.onkeyup = validatePassword;
-</script>
-
- <script>
-  var password_edit = document.getElementById("user_password_edit")
-  , confirm_password_edit = document.getElementById("confirm_password_edit");
-
-function validatePassword_edit(){
-  if(password_edit.value != confirm_password_edit.value) {
-    confirm_password_edit.setCustomValidity("Passwords Don't Match");
-  } else {
-    confirm_password_edit.setCustomValidity('');
-  }
-}
-
-password_edit.onchange = validatePassword_edit;
-confirm_password_edit.onkeyup = validatePassword_edit;
-</script>
- <!-- /.show pass 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-show-password/1.0.3/bootstrap-show-password.min.js"></script>
-
-<script type="text/javascript">
-  //$("#user_password_edit").password('toggle');
-  //$("#confirm_password_edit").passwordconfirm('toggle');
-</script>
-<script type="text/javascript">
-  
- // $("#confirm_password_edit").password('toggle');
-</script>-->

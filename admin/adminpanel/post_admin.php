@@ -19,10 +19,6 @@
         Dashboard
         <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -142,8 +138,6 @@
     <!-- Modal EDIT  Post -->
     <?php include "layout/modal/edit_post.php"; ?>
     <!-- // Modal EDIT  Post -->
-    <!-- Modal EDIT  user -->
-    <?php include "layout/modal/edit_user.php" ?>
 <!-- // Modal EDIT  user -->
   </div>
   <!-- /.content-wrapper -->

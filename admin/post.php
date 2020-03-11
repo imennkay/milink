@@ -82,8 +82,7 @@ ob_start();
         <p class="lead"><?php echo $view_post_text; ?></p>
         <hr>
 
-        <!-- Comments Form -->
-        <?php include "layout/comment_form.php" ?>
+        
 
         <!-- Single Comment -->
         <?php include "layout/comments.php" ?>

@@ -48,7 +48,7 @@
                 </div>
                 <div class="form-group">
                   <label for="title_edit" class="col-form-label">Title:</label>
-                  <input type="text" class="form-control" id="title_edit" name="title_edit" placeholder="Enter Title Here" required="">
+                  <input type="text" class="form-control" id="title_edit" name="title_edit" placeholder="Enter Title Here">
                 </div>
                 <div class="row">
                     <div class="col-sm-4">
@@ -65,12 +65,9 @@ function mouseOver() {
    var slikazaprikaz = document.getElementById("image_edit").value; 
    var putanja = '../../images/';
    image.setAttribute('src', putanja + slikazaprikaz);
-   //alert(slikazaprikaz);
+   
 }
-//function bigImg() {
-  // var image = document.getElementById('image');
-   //image.setAttribute('src', 'images/blog/nophoto-default1.jpg');
-//}
+
 </script>
     
                      <img  class="zoom" src="" id="image" name="image" width="50">
@@ -81,7 +78,7 @@ function mouseOver() {
                   </div>
                   <div class="form-group shadow-textarea">
                     <label for="post_text_edit" class="col-form-label">Text:</label>
-                    <textarea name="description_edit" id="post_text_edit" placeholder="Enter Post Text Here" required></textarea>
+                    <textarea name="description_edit" id="post_text_edit" placeholder="Enter Post Text Here"></textarea>
                   </div>
                     <script>
                        CKEDITOR.replace('post_text_edit');

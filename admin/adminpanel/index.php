@@ -17,10 +17,6 @@
         Dashboard
         <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
     </section>
 
     <!-- Main content -->
@@ -111,7 +107,6 @@
   <!-- Modal add new post -->
     <?php include "layout/modal/add_new_post.php"; ?>
      <!-- // Modal add new Post -->
-     <?php include "layout/modal/edit_user.php" ?>
   <!-- /.content-wrapper -->
   <?php include "layout/footer.php"; ?>
 

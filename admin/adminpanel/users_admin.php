@@ -28,10 +28,6 @@
       <div class="box">
         <div class="box-header with-border">
           
-          
-
-          
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#InsertUser"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add new admin</button>
           <div class="box-tools pull-right">
             
           </div>
@@ -71,7 +67,6 @@
               <th style="text-align: center;">Username</th>
               <th style="text-align: center;">Email</th>
               <th style="text-align: center;">Image</th>
-              <th style="text-align: center;">Edit/Delete</th>
             </tr>
             <?php 
                 $sql_select_users = "SELECT * FROM users ORDER BY id desc";
@@ -94,11 +89,7 @@
               <td style="text-align: center;"><img  class="zoom" src="../../images/<?php  echo $view_users_image; ?>" width="50"></td>
              
               
-                <td style="text-align: center;">
-                <button type="button" name="edit" class="btn btn-warning" data-toggle="modal" data-target="#EditUser" data-user_id_edit="<?= $view_users_id ?>" data-user_name_edit="<?= $view_users_name ?>" data-user_username_edit="<?= $view_users_username ?>" data-user_email_edit="<?= $view_users_email ?>" data-user_image_edit="<?= $view_users_image ?>" data-user_type_edit="<?= $view_users_type ?>" data-user_type_edit1="<?= $view_users_type ?>" data-user_gender_edit="<?= $view_users_gender ?>" data-user_password_edit="<?= $view_users_password ?>" > <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit</button>
-
-               <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#DeleteUser" data-user_id_delete="<?= $view_users_id ?>"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</button>
-              </td>
+               
             </tr>
             <?php
                 } 
@@ -128,15 +119,7 @@
       <!-- /.box -->
     </section>
     <!-- /.content -->
-     <!-- Modal add new category -->
-      <?php include "layout/modal/add_new_user.php" ?>
-     <!-- // Modal add new category -->
-    <!-- Modal Delete Category-->
-      <?php include "layout/modal/delete_user.php" ?>
-    <!-- // Modal Delete Category-->
-    <!-- Modal EDIT  user -->
-    <?php include "layout/modal/edit_user.php" ?>
-<!-- // Modal EDIT  user -->
+
 <!-- Modal add new post -->
     <?php include "layout/modal/add_new_post.php"; ?>
      <!-- // Modal add new Post -->

@@ -11,30 +11,22 @@
   <?php include "layout/header.php"; ?>
   <?php include "layout/leftsidebar.php"; ?>
 
-  <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Dashboard
         <small>Control panel</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+      
     </section>
 
-    <!-- Main content -->
     <section class="content">
-      <!-- Default box -->
       <div class="box">
         <div class="box-header with-border">
           
            <?php 
              if (isset($_POST['selectOneCheckBoxArray']))
              {
-                 //header("Location: index.php");
                foreach ($_POST['selectOneCheckBoxArray'] as $checked_Box_Comment_Id)
                {
                 $group_options = $_POST['group_options'];
@@ -92,7 +84,7 @@
               <th style="text-align: center;">
               </th>
               <th style="text-align: center;">Comments</th>
-              <th style="text-align: center;">Edit/Delete</th>
+              <th style="text-align: center;">Delete</th>
             </tr>
             <?php 
                 $sql_select_comment = "SELECT * FROM comment ORDER BY id desc";
@@ -156,7 +148,6 @@
     <?php include "layout/modal/add_new_post.php"; ?>
      <!-- // Modal add new Post -->
      <!-- Modal EDIT  user -->
-    <?php include "layout/modal/edit_user.php" ?>
   </div>
   <!-- /.content-wrapper -->
   <?php include "layout/footer.php"; ?>

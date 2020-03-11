@@ -52,14 +52,23 @@
 
              ?>
           <a href="adminpanel/" class="btn btn-default btn-flat" target="_blank">Administration</a>
+          <a href="layout/logout.php" class="btn btn-default btn-flat">Sign out</a></p>
+
+
           <?php
-           }
+           die;}
            else
-            {
+           {
 
            ?>
-           <?php } ?>
-          <a href="layout/logout.php" class="btn btn-default btn-flat">Sign out</a></p>
+           <?php }?>
+           
+           <p> You are not an admin </p>
+           <a href="../index.php" class="btn btn-default btn-flat" target="_blank">Go to blog</a>
+           <a href="layout/logout.php" class="btn btn-default btn-flat">Sign out</a></p>
+
+
+          
         </div>
       </div>
      

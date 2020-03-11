@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
-    <body>
+   <div class="signup-form">
        <div class="center">
        <?php
          if(isset($_GET['err']) && $_GET['err']=true){
-            echo "Wrong!". $_GET['message']."<br>";
-         } 
-      
+            echo "<p class=\"error\">Wrong! ". $_GET['message']."<p>";
+         }
+         $userName=(isset($_GET['username']) ? $_GET['username']: "");
+         $Email=(isset($_GET['email']) ? $_GET['email']: "");
        ?>
-         <p>Sign up</p>
-           <form action="views/signup.php" method="POST" enctype="multipart/form-data">
-              <input type="text" name="username" placeholder="Username"><span>*</span><br>
-              <input type="email" name="email" placeholder="Email"><span>*</span><br>
-              <input type="password" name="password" placeholder="Password"><span>*</span><br>
-              <input type="password" name="password_confirm" placeholder="Confirm password"><span>*</span><br>
-              <label>Image:</label>
-              <input type="file" name="user_image" id="user_image"><br>
+           <div class="login-icon"><i class="fas fa-user"></i></div>
+           <form action="views/signup.php" method="POST">
+              <input type="text" name="username" placeholder="Username" value="<?php echo $userName; ?>"><br>
+              <input type="email" name="email" placeholder="Email" value="<?php echo $Email; ?>"><br>
+              <input type="password" name="password" placeholder="Password"><br>
+              <input type="password" name="password_confirm" placeholder="Confirm password"><br>
               <input type="submit" value="Signup" name="submit"><br>
            </form>
         </div>
-    </body>
-</html>
+   </div>
    
