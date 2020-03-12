@@ -261,17 +261,13 @@ input[type=submit]{
 .card-title{
     font-size: 2rem;
 }
-/* .showmore{
-    display: block;
+.card-title a{
+    color: #477998;
     text-decoration: none;
-    font-size: 1.5rem;
-    color: silver;
-    margin: 2rem 0;
-    text-align: center;
 }
-.showmore:hover{
-    color:gray;
-} */
+.card-title a:hover{
+    color: silver;
+}
 
 /*------ styles for singlepost ------*/
 .singlepost{
