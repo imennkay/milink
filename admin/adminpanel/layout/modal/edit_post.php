@@ -14,9 +14,10 @@
         }
 
         $edit_post_text=$_POST['description_edit'];
+        $edit_post_updated_date=date("Y-m-d H:i:sa");
 
 
-        $sql_edit_post = "UPDATE posts SET title='$edit_post_title', description='$edit_post_text', image='$new_post_image' WHERE id={$edit_post_id}";
+        $sql_edit_post = "UPDATE posts SET title='$edit_post_title', description='$edit_post_text', image='$new_post_image', updated_date='$edit_post_updated_date' WHERE id={$edit_post_id}";
         $result_sql_edit_post= mysqli_query($dbh, $sql_edit_post);
         if (!$result_sql_edit_post)
                 {
