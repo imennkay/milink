@@ -221,7 +221,7 @@ input[type=submit]{
 }
 
 /* loginform size changes when screen height is less than 400px. */
-@media screen and (max-height:400px){
+@media screen and (max-height:500px){
     .loginform, .signup-form{
         height: auto;
     }

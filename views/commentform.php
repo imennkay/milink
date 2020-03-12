@@ -1,7 +1,14 @@
     <div class="comment-form">
         <?php 
         $postId=$_GET['postId'];
-        echo "<p><img class=\"user-image\" src=\"images/".$_SESSION['user__image']."\" alt=\"user image\"> ".$_SESSION['user__name']."</p>";
+        $userId=$_SESSION['user__id'];
+        $sql="select image from users where id=:userId";
+        $stmt=$dbh->prepare($sql);
+        $stmt->bindParam(':userId', $userId);
+        $stmt->execute();
+        $data=$stmt->fetch(PDO::FETCH_ASSOC);
+        echo "<p><img class=\"user-image\" src=\"images/".$data['image']."\" alt=\"user image\"> ".$_SESSION['user__name']."</p>";
+            
         echo "<form action=\"views/comment.php?postId=" .$postId."\" method=\"POST\">";
 
         ?>

@@ -28,7 +28,6 @@ if($page=="about"){
     include("views/post.php");
 }
 
-// echo "<a class=\"showmore\" href=\"index.php?page=post\">Show more>></a>";
 include("footer.php")
 ?>
 

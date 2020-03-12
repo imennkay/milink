@@ -30,7 +30,7 @@
         </div>
         <hr>
         <div class="copyright">
-            <p>Copyright © MILink Sweden 2020 | Tulegatan 41, 113 53 Stockholm
+            <p>Copyright © MILink Sweden <?php echo date("Y");?> | Tulegatan 41, 113 53 Stockholm
                 | Email: info@MILink.com | Tel: +46712345678 | Cookies</p>
         </div>
 </footer>

@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/style.css?<?php echo time(); ?>">
+    <link rel="stylesheet" type="text/css" href="css-public/style.css?<?php echo time(); ?>">
     <script src="app.js" defer></script>
 </head>
 <body>
+<!-- start of nav bar -->
     <nav>
         <div class="hamburger">
             <i class="fa fa-bars"></i>
@@ -35,6 +36,7 @@
        </ul>
        <div>
           <?php
+            //  After the user login, show username and user image on the top right of index page
                if(isset($_SESSION['user__name'])){
                 $userId=$_SESSION['user__id'];
                 $sql="select image from users where id=:userId";

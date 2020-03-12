@@ -11,10 +11,12 @@ $title="";
     echo "<div class=\"singlepost\">";
       echo "<div class=\"card\">";
         echo "<div class=\"card-body\">";
-        echo "<p class=\"card-head\">".$post['username']." | ".$post['created_date']."</p>";
-          echo "<h5 class=\"card-title\">".$post['title']."</h5>";
-          echo "<p class=\"card-text\">".$post['description']."</p>";
-       echo "</div>";
+            echo "<p class=\"card-head\">".$post['username']." | ".$post['created_date']."</p>";
+            echo "<h5 class=\"card-title\">".$post['title']."</h5>";
+            echo "<p class=\"card-text\">".$post['description']."</p>";
+        echo "</div>";
+      echo "</div>";
+    echo "</div>"; 
   }
 
   // create comment object and show all the comments to the post
