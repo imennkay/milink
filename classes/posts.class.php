@@ -25,7 +25,7 @@ class Posts{
     }
 
     public function fetchSinglePost($id){
-        $sql="SELECT title, description, p.image, category, username, p.created_date from posts as 
+        $sql="SELECT title, description, p.image, category, username, p.created_date, p.updated_date from posts as 
         p inner join users as u on p.userId=u.id where p.id=:id";
         $stmt=$this->databaseHandler->prepare($sql);
         $stmt->bindparam(':id', $id);
