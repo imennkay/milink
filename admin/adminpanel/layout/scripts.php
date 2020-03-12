@@ -116,6 +116,7 @@ $('#EditPost').on('show.bs.modal', function (event) {
   var title = button.data('title_edit')
   var image = button.data('image_edit')
   var text = button.data('description_edit')
+  var updateDate = button.data('update_date')
   
 
       
@@ -124,6 +125,7 @@ $('#EditPost').on('show.bs.modal', function (event) {
   modal.find('.modal-body #title_edit').val(title);
   modal.find('.modal-body #post_image_edit1').val(image);
   modal.find('.modal-body #description_edit').val(text);
+  modal.find('.modal-body #update_date').val(updateDate);
   var slikazaprikaz = document.getElementById("post_image_edit1").value; 
 
 

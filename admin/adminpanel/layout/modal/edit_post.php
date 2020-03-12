@@ -3,6 +3,7 @@
       {
         $edit_post_id=$_POST['id_edit'];
         $edit_post_title=$_POST['title_edit'];
+        $edit_update_date=$_POST['update_date'];
         $edit_post_text=$_POST['description_edit'];
         $edit_post_title = mysqli_real_escape_string($dbh,$edit_post_title);
         $new_post_image = $_FILES["new_post_image"]["name"];
@@ -16,7 +17,7 @@
         $edit_post_text=$_POST['description_edit'];
 
 
-        $sql_edit_post = "UPDATE posts SET title='$edit_post_title', description='$edit_post_text', image='$new_post_image' WHERE id={$edit_post_id}";
+        $sql_edit_post = "UPDATE posts SET title='$edit_post_title', description='$edit_post_text', image='$new_post_image', updated_date='$edit_update_date' WHERE id={$edit_post_id}";
         $result_sql_edit_post= mysqli_query($dbh, $sql_edit_post);
         if (!$result_sql_edit_post)
                 {
