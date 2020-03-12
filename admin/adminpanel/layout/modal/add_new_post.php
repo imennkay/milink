@@ -73,7 +73,7 @@
                       <input type="file" name="post_image" id="post_image" accept="image/*">
                   </div>
                   <div class="form-group shadow-textarea">
-                    <label for="description" class="col-form-label">Text:</label>
+                    <label for="description_edit" class="col-form-label">Text:</label>
                     <textarea name="description_edit" id="description_edit" placeholder="Enter Post Text Here" required></textarea>
                   </div>
                     <script>

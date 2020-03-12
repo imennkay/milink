@@ -15,7 +15,7 @@ class Posts{
 
     public function fetchAll(){
       
-        $sql="SELECT * from posts ORDER BY id desc";
+        $sql="SELECT * from posts ORDER BY id asc";
         $return_array= $this->databaseHandler->query($sql);
         if($return_array){
             $this->posts=$return_array->fetchAll(PDO::FETCH_ASSOC);
