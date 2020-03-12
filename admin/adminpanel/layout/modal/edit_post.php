@@ -1,4 +1,5 @@
 <?php
+
       if (isset($_POST['edit_post']))
       {
         $edit_post_id=$_POST['id_edit'];
