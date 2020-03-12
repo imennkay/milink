@@ -17,7 +17,7 @@ include("classes/posts.class.php");
            echo "</div>";
            echo "<div class=\"col-md-7\">";
               echo "<div class=\"card-body\">";
-                 echo "<h5 class=\"card-title\">" .$post['title']. "</h5>";
+                 echo "<h5 class=\"card-title\"><a href=\"index.php?page=post&postId=".$post['id']."\">" .$post['title']. "</a></h5>";
                  $string = strip_tags($post['description']);
                  if (strlen($string)>300){
                      // truncate string
@@ -51,7 +51,7 @@ include("classes/posts.class.php");
               echo "</div>";
               echo "<div class=\"col-md-7\">";
                echo "<div class=\"card-body\">";
-                echo "<h5 class=\"card-title\">" .$post['title']. "</h5>";
+                echo "<h5 class=\"card-title\"><a href=\"index.php?page=post&postId=".$post['id']."\">".$post['title']. "</a></h5>";
                 $string = strip_tags($post['description']);
                 if (strlen($string)>300){
                     // truncate string

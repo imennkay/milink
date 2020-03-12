@@ -18,7 +18,7 @@ if(empty($_POST["password"])){
 
 
 // check if username and password exists in database
-$sql= "SELECT id, username, password, image FROM users where username=:userName";
+$sql= "SELECT id, password, image FROM users where username=:userName";
 $stmt = $dbh->prepare($sql);
 $stmt->bindParam(':userName', $userName);
 $stmt->execute();
@@ -26,6 +26,7 @@ $data=$stmt->fetch(PDO::FETCH_ASSOC);
 $userId=$data['id'];
 $userImage=$data['image'];
 $password=$data['password'];
+
 
 if(!empty($data)){
    // Account exists, now we verify the password.
