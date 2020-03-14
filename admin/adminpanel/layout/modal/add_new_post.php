@@ -20,7 +20,7 @@
         }
          move_uploaded_file($add_post_image_temp,"../../images/$add_post_image");
 
-        $add_post_text=$_POST['description_edit'];
+         $add_post_text=htmlspecialchars($_POST['description_edit']);
         
 
         $sql_add_post = "INSERT INTO posts(title,description,image,category,userid) VALUES('$add_post_title', '$add_post_text', '$add_post_image', '$add_post_category', $add_post_autor)";

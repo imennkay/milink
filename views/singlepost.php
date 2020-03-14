@@ -11,7 +11,7 @@ $title="";
     echo "<div class=\"singlepost\">";
       echo "<div class=\"card\">";
         echo "<div class=\"card-body\">";
-            echo "<p class=\"card-head\">Created by ".$post['username']." at ".$post['created_date']. " | Updated at " .$post['updated_date']. "</p>";
+            echo "<p class=\"card-head\">Created by ".$post['username']." on ".$post['created_date']. " | Last updated on " .$post['updated_date']. "</p>";
             echo "<h5 class=\"card-title\">".$post['title']."</h5>";
             echo "<p class=\"card-text\">".$post['description']."</p>";
         echo "</div>";

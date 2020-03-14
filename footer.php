@@ -3,9 +3,9 @@
             <div class="Links">
                 <h4>Links</h4>
                 <ul>
-                    <li>Home</li>
-                    <li>Post</li>
-                    <li>About us</li>
+                    <li><a href="index.php?page=home">Home</a></li>
+                    <li><a href="index.php?page=post">Post</a></li>
+                    <li><a href="index.php?page=about">About us</a></li>
                 </ul>
             </div>
             <div class="about-us-links">

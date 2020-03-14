@@ -261,13 +261,14 @@ input[type=submit]{
 .card-title{
     font-size: 2rem;
 }
-.card-title a{
+.card-body a{
     color: #477998;
     text-decoration: none;
 }
-.card-title a:hover{
+.card-body a:hover{
     color: silver;
 }
+
 
 /*------ styles for singlepost ------*/
 .singlepost{
@@ -369,7 +370,14 @@ footer hr{
     grid-gap:2rem;
 }
 h4{
-    color: #08BDBD;
+    color: #477998;
+}
+.Links a{
+     text-decoration: none;
+     color: white;
+}
+.Links a:hover{
+    color: silver;
 }
 .footer-right{
     text-align: right;
